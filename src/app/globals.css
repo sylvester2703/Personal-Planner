@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas-bg: #f8fafc;
+    --foreground: #09090b;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+
+    --surface-1: #ffffff;
+    --surface-2: #f1f5f9;
+    --surface-3: #e2e8f0;
+    --surface-elevated: #e2e8f0;
+
+    --border-subtle: #e2e8f0;
+    --border-accent: #cbd5e1;
+    --border-strong: #94a3b8;
+
+    --text-primary: #09090b;
+    --text-muted: #52525b;
+    --text-secondary: #71717a;
+
+    --semantic-emerald-text: #059669;
+    --semantic-emerald-bg: rgba(16, 185, 129, 0.15);
+    --semantic-emerald-border: rgba(16, 185, 129, 0.4);
+
+    --semantic-rose-text: #e11d48;
+    --semantic-rose-bg: rgba(244, 63, 94, 0.15);
+    --semantic-rose-border: rgba(244, 63, 94, 0.4);
+
+    --semantic-sky-text: #0284c7;
+    --semantic-sky-bg: rgba(14, 165, 233, 0.15);
+    --semantic-sky-border: rgba(14, 165, 233, 0.4);
+
+    --semantic-amber-text: #d97706;
+    --semantic-amber-bg: rgba(245, 158, 11, 0.15);
+    --semantic-amber-border: rgba(245, 158, 11, 0.4);
+
+    --semantic-purple-text: #9333ea;
+    --semantic-purple-bg: rgba(168, 85, 247, 0.15);
+    --semantic-purple-border: rgba(168, 85, 247, 0.4);
+  }
+
+  .dark {
+    --canvas-bg: #09090b;
+    --foreground: #fafafa;
+    --card-bg: #121215;
+    --card-border: #27272a;
+
+    --surface-1: #121215;
+    --surface-2: #18181b;
+    --surface-3: #202025;
+    --surface-elevated: #27272a;
+
+    --border-subtle: #27272a;
+    --border-accent: #3f3f46;
+    --border-strong: #52525b;
+
+    --text-primary: #fafafa;
+    --text-muted: #a1a1aa;
+    --text-secondary: #71717a;
+
+    --semantic-emerald-text: #34d399;
+    --semantic-emerald-bg: rgba(6, 78, 59, 0.35);
+    --semantic-emerald-border: rgba(6, 95, 70, 0.6);
+
+    --semantic-rose-text: #fb7185;
+    --semantic-rose-bg: rgba(136, 19, 55, 0.35);
+    --semantic-rose-border: rgba(159, 18, 57, 0.6);
+
+    --semantic-sky-text: #38bdf8;
+    --semantic-sky-bg: rgba(12, 74, 110, 0.35);
+    --semantic-sky-border: rgba(3, 105, 161, 0.6);
+
+    --semantic-amber-text: #fbbf24;
+    --semantic-amber-bg: rgba(120, 53, 15, 0.35);
+    --semantic-amber-border: rgba(180, 83, 9, 0.6);
+
+    --semantic-purple-text: #c084fc;
+    --semantic-purple-bg: rgba(88, 28, 135, 0.35);
+    --semantic-purple-border: rgba(126, 34, 206, 0.6);
+  }
+
+  html {
+    font-size: 16.5px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--canvas-bg);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+    line-height: 1.55;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #121215;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* KaTeX custom style adjustments */
+.katex {
+  font-size: 1.05em !important;
+}
+
+.dark .katex {
+  color: #fafafa !important;
+}
+
+.katex-display {
+  margin: 0.5em 0 !important;
+}
+
+.katex-render-container {
+  display: inline-block;
+}
+
+/* Print Optimization */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .katex {
+    color: #000000 !important;
+  }
+
+  header, nav, button, .print\:hidden {
+    display: none !important;
+  }
+}
+
+
