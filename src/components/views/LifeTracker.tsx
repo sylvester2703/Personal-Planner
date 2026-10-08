@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useExamStore } from '@/store/useExamStore';
-import { PersonalTodoCategory } from '@/types';
+import { PersonalTodoCategory, HotspotHistoryEntry } from '@/types';
 import {
   Wifi,
   CheckCircle2,
@@ -35,7 +35,6 @@ export const LifeTracker: React.FC = () => {
   const [newTodoText, setNewTodoText] = useState('');
   const [newTodoCategory, setNewTodoCategory] = useState<PersonalTodoCategory>('PERSONAL');
   const [newTodoTime, setNewTodoTime] = useState('');
-  const [customUsageInput, setCustomUsageInput] = useState<number>(100);
 
   const remainingMB = Math.max(0, dailyHotspotQuotaMB - consumedHotspotMB);
   const usagePercent = Math.min(100, (consumedHotspotMB / dailyHotspotQuotaMB) * 100);

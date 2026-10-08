@@ -70,6 +70,15 @@ export const useExamStore = create<ExamStoreState>()(
       phaseFilter: 'ALL',
       activeTab: 'schedule',
 
+      // Hotspot Quota State
+      dailyHotspotQuotaMB: 2000,
+      consumedHotspotMB: 650,
+      hotspotHistory: [
+        { date: '2026-10-07', consumedMB: 1450 },
+        { date: '2026-10-06', consumedMB: 1820 },
+        { date: '2026-10-05', consumedMB: 1200 },
+      ],
+
       setTheme: (theme: ThemeMode) => {
         applyThemeClass(theme);
         set({ theme });
@@ -440,6 +449,22 @@ _Sent from SPPU AI&DS ExamOS_`;
         }));
       },
 
+      updateHotspotUsage: (deltaMB: number) => {
+        set((state) => ({
+          consumedHotspotMB: Math.max(0, state.consumedHotspotMB + deltaMB),
+        }));
+      },
+
+      resetDailyHotspot: () => {
+        set((state) => ({
+          hotspotHistory: [
+            { date: state.selectedDate || state.currentDate, consumedMB: state.consumedHotspotMB },
+            ...state.hotspotHistory.slice(0, 6),
+          ],
+          consumedHotspotMB: 0,
+        }));
+      },
+
       startStopwatch: (taskId?: string) => {
         set((state) => ({
           activeStopwatch: {
@@ -499,6 +524,13 @@ _Sent from SPPU AI&DS ExamOS_`;
           subjectFilter: 'ALL',
           phaseFilter: 'ALL',
           activeTab: 'schedule',
+          dailyHotspotQuotaMB: 2000,
+          consumedHotspotMB: 650,
+          hotspotHistory: [
+            { date: '2026-10-07', consumedMB: 1450 },
+            { date: '2026-10-06', consumedMB: 1820 },
+            { date: '2026-10-05', consumedMB: 1200 },
+          ],
         });
       },
     }),

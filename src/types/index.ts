@@ -31,7 +31,12 @@ export interface DaySchedule {
   isAudited: boolean;
 }
 
-export type PersonalTodoCategory = 'PRAYER' | 'COLLEGE' | 'PERSONAL';
+export type PersonalTodoCategory = 'PRAYER' | 'COLLEGE' | 'PERSONAL' | 'HOTSPOT';
+
+export interface HotspotHistoryEntry {
+  date: string;
+  consumedMB: number;
+}
 
 export interface PersonalTodo {
   id: string;
@@ -104,6 +109,11 @@ export interface ExamStoreState {
   phaseFilter: PhaseType | 'ALL';
   activeTab: 'schedule' | 'personal_calendar' | 'pyq_drive' | 'syllabus' | 'focus' | 'analytics';
   
+  // Mobile Hotspot Quota State
+  dailyHotspotQuotaMB: number;
+  consumedHotspotMB: number;
+  hotspotHistory: HotspotHistoryEntry[];
+  
   // Actions
   setTheme: (theme: ThemeMode) => void;
   toggleTheme: () => void;
@@ -135,6 +145,10 @@ export interface ExamStoreState {
   addPersonalTodo: (text: string, category: PersonalTodoCategory, time?: string) => void;
   togglePersonalTodo: (id: string) => void;
   deletePersonalTodo: (id: string) => void;
+
+  // Hotspot Quota Actions
+  updateHotspotUsage: (deltaMB: number) => void;
+  resetDailyHotspot: () => void;
   
   // Stopwatch Actions
   startStopwatch: (taskId?: string) => void;
